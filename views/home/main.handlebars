@@ -1,0 +1,27 @@
+
+<div>
+            <form action="/register" method="post">
+                <div class="container">
+                  <h2>Register</h2>
+                  <p>Please fill in this form to create an account.</p>
+                  <hr>
+              
+                  <label><b>Email</b></label>
+                  <input name="email" value="{{email}}" type="text" placeholder="Enter Email" name="email" id="email" >
+                
+                  <label ><b>Password</b></label>
+                  <input name="password" value="{{password}}" type="password" placeholder="Enter Password" name="psw" id="psw" >
+                
+                  <label ><b>Confirm Password</b></label>
+                  <input type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat" >
+                  <hr>
+              
+                   
+                  <button type="submit" class="registerbtn">Register</button>
+                </div>
+              
+                <div class="container signin">
+                  <p>Already have an account? <a href="/customer_login">Sign in</a>.</p>
+                </div>
+              </form>
+        </div>
