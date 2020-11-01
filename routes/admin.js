@@ -1,6 +1,6 @@
 const express=require('express');
 const router=express.Router();
-const Admin =require('../classes/home')
+const {Admin} =require('../classes/home')
 
 router.all('/*',(req,res,next)=>{
     req.app.locals.layout = 'admin';
