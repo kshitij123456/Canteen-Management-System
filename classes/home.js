@@ -1,6 +1,7 @@
 const bcrypt = require('bcryptjs');
 const User=require('../models/User');
-
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
 class home{
     constructor(email,password){
         this.email=email;
@@ -10,13 +11,13 @@ class home{
 
 
 
- class registerUser extends home{
+class Registeration extends home{
     constructor(email,password){
         super(email,password);
  }
- getRegister(){
-    
-    const newUser = new User({        
+  register(){
+      
+      const newUser = new User({        
         email: this.email,
         password: this.password
     });
@@ -28,10 +29,38 @@ class home{
             
         });
     });
-}
+  }
 }
 
-
+class loginCustomer extends home {
+    login(){
+        passport.use(new LocalStrategy({usernameField: 'email'},(email, password, done)=> {
+            User.findOne({email:email}).then(user=>{
+                if(!user) return done(null, false, {message: 'no user found'});
+                bcrypt.compare(password, user.password, (err, matched)=>{
+                    if (err) return err;
+                    if (matched) {
+                        return done(null, user);                
+                    } else {
+                        return done(null, false, {message:'password is incorrect'});
+                        
+                    }
+                });
+            });
+        }));
+        
+        passport.serializeUser(function(user, done) {
+            done(null, user.id);
+          });
+          
+          passport.deserializeUser(function(id, done) {
+            User.findById(id, function(err, user) {
+              done(err, user);
+            });
+          });
+         
+    }
+}
 
 class Admin extends home{
     constructor(email,password){
@@ -49,6 +78,4 @@ class Admin extends home{
         }
         }
     }
-module.exports=home;
-module.exports=registerUser;
-module.exports=Admin;
+module.exports={loginCustomer , Registeration, Admin}
