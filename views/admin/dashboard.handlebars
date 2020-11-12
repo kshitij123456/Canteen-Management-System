@@ -1,8 +1,36 @@
 <div>
 
-        <h2>dashboard</h2>
+        <h2 class="large text-primary">Dashboard</h2>
         
-        <p>Welcome to the Admin Section</p>
+        <p class="lead">Welcome to the Admin Section</p>
+
+        <div>
+<h2 class="textc">Customers</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th class="hide-sm">Id</th>
+            <th class="hide-sm">Name</th>
+            <th class="hide-sm">Email</th>
+            <th class="hide-sm">Address</th>
+            <th class="hide-sm">Date of joining</th>
+            <th class="hide-sm">Order history</th>
+        </tr>
+    </thead>
+    <tbody>
+            {{#each customer}}
+            <tr>
+                    <td>{{id}}</td>
+                    <td>{{Name}}</td>
+                    <td>{{email}}</td>
+                    <td>{{address}}</td>
+                    <td>{{date}}</td>
+                    <td><a class="view" href="/orderhistory">view</a></td>
+            </tr>
+            {{/each}}
+    </tbody>
+
+</div>
 
 </div>
          

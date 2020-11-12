@@ -1,21 +1,25 @@
-<h2>Add product</h2>
+<h2 class="large text-primary">Add product</h2>
 
 <div>
-    <form>
+    <form action="/admin/addItem" method="post" class="form">
+    <div class="form-group">
         <label>Name</label>
-        <input type="text" name="name"/>
-        <br>
-        <br>
+        <input type="text" name="Name" value='{{Name}}' placeholder="Name of the item"/></div>
+         
+        <div class="form-group">
         <label>Price</label>
-        <input type="text" name="price" />
-        <br><br>
+        <input type="text" name="price" value='{{price}}' placeholder="price"/></div>
+    
+        <div class="form-group">
         <label>Category</label>
-        <select name="category">
+        <select name="category" value='{{category}}' >
             <option>Breakfast</option>
             <option>Lunch</option>
             <option>Dinner</option>
             <option>Desert</option>
         </select>
+        </div>
+        <button type="submit" class="registerbtn">add</button>
 
     </form>
 

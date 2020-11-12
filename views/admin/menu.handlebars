@@ -1,14 +1,55 @@
 
 <div>
-<h2>Menu</h2>
-<table>
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Category</th>
-        </tr>
-    </thead>
+<h2 class="large text-primary">Menu</h2>
+ <p class="lead">BREAKFAST</p>
+      {{#each item}}
+    <div class="card">
+  <p>img</p>
+  <div class="container">
+    <h4><b>{{Name}}</b></h4> 
+    <p>Rs {{price}}</p> 
+    <p>Type: {{category}}</p>
+    
+    
+  </div>
+</div>
+<br><br>
+{{/each}}
+<p class="lead">LUNCH</p>
+  {{#each item1}}
+    <div class="card">
+  <p>img</p>
+  <div class="container">
+    <h4><b>{{Name}}</b></h4> 
+    <p>Rs {{price}}</p> 
+    <p>Type: {{category}}</p>
+  </div>
+</div>
+<br><br>
+{{/each}}
+<p class="lead">DINNER</p>
+  {{#each item2}}
+    <div class="card">
+  <p>img</p>
+  <div class="container">
+    <h4><b>{{Name}}</b></h4> 
+    <p>Rs {{price}}</p> 
+    <p>Type: {{category}}</p>
+  </div>
+</div>
+<br><br>
+{{/each}}
 
+<p class="lead">DESSERT</p>
+  {{#each item3}}
+    <div class="card">
+  <p>img</p>
+  <div class="container">
+    <h4><b>{{Name}}</b></h4> 
+    <p>Rs {{price}}</p> 
+    <p>Type: {{category}}</p>
+  </div>
+</div>
+<br><br>
+{{/each}}
 </div>

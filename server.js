@@ -15,7 +15,10 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json())
 
-app.engine('handlebars',exphb({defaultLayout:'home'}));
+app.engine('handlebars',exphb({defaultLayout:'home',runtimeOptions: {        
+    allowProtoPropertiesByDefault: true,
+    allowProtoMethodsByDefault: true,
+   }}));
 app.set('view engine','handlebars');
 
 app.use(passport.initialize());

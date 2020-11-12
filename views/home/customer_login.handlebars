@@ -1,17 +1,20 @@
 <div>
-
- <form action="/customer_login" method="post">
-        <h2>Customer Login</h2>
-        <br><br>
+     <h2 class="large text-primary">Customer Login</h2>
+ <form action="/customer_login" method="post" class="form">
+       
+        <div class="form-group">
         <input name="email" value="{{email}}" type="email"  placeholder="email">
-        <p>The username is Alphanumeric and can contain underscores(_) <br>Must contain atleast 5 Characters</p>
-        <br><br>
-        
+        <p>The username is Alphanumeric and can contain underscores(_) Must contain atleast 5 Characters</p>
+        </div>
+        <div class="form-group">
         <input name="password" value="{{password}}" type="password"  placeholder="Password">
-        <p>The Password is Alphanumeric and can contain @ and hyphens(-) <br>Must contain 8 to 20 Characters</p>
-        <br><br>
-        <br><br>
+        <p>The Password is Alphanumeric and can contain @ and hyphens(-) Must contain 8 to 20 Characters</p>
+        </div>
+         
         <button type="submit" class="registerbtn">Login</button>
+        <div class="form-group">
+                  <p>Don't have an account? <a href="/register">Sign up</a></p>
+                </div>
        
         <script src="customer_login_js.js"></script>
     </form>

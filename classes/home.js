@@ -12,14 +12,19 @@ class home{
 
 
 class Registeration extends home{
-    constructor(email,password){
+    constructor(email,password,Name,address){
         super(email,password);
+        this.name=Name;
+        this.address=address;
  }
   register(){
       
-      const newUser = new User({        
+      const newUser = new User({
+        Name:this.name,        
         email: this.email,
-        password: this.password
+        password: this.password,
+        address:this.address,
+    
     });
 
     bcrypt.genSalt(10, (err, salt)=>{

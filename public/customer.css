@@ -1,0 +1,89 @@
+h2{
+    
+  color:whitesmoke;
+
+}
+.large {
+  font-size: 3rem;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+   
+}
+.text-primary {
+  color:#1E90FF;
+  margin-left:150px ;
+}
+body{
+    
+  font-family: 'Raleway', sans-serif;
+     font-size: 1rem;
+     line-height: 1.6;
+     background-color: #fff;
+     color: #333;    
+     margin: 0;
+     
+}
+.first{
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  margin-left: 700px;
+}
+  table {
+    width: 100%;
+    border: 1px solid black;
+  }
+th, td {
+    border: 1px solid black;
+  }
+   
+  .topnav {
+    display: flex;
+    align-items: center;
+    padding: 0.7rem 2rem;
+    border-bottom: solid 1px var(--primary-color);
+   opacity: 0.9; 
+   border-bottom: solid 1px var(--primary-color);
+    background-color:black;
+    overflow: hidden;
+    padding: 10px;
+  }
+  
+  /* Style the links inside the navigation bar */
+  .topnav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    
+  }
+  .first{
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    margin-left: 700px;
+  }
+  /* Change the color of links on hover */
+  .topnav a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+  
+  /* Add a color to the active/current link */
+  .topnav a.active {
+    background-color: #4CAF50;
+    color: white;
+  }
+
+       
+    .logout{
+      margin-left: 1150px;
+    }

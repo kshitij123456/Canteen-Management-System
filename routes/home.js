@@ -13,16 +13,19 @@ router.all('/*',(req,res,next)=>{
     next();
 });
 
-
-
-
 router.get('/',(req,res)=>{
-res.render('home/main')
+    res.render('home/main')
+})
+
+
+router.get('/register',(req,res)=>{
+res.render('home/register')
 })
 router.post('/register',(req,res)=>{
    
-    let customer=new Registeration(req.body.email,req.body.password);
+    let customer=new Registeration(req.body.email,req.body.password,req.body.Name,req.body.address);
     customer.register();                   
+
         res.redirect('/customer_login');    
 
 
