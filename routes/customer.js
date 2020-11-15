@@ -21,8 +21,20 @@ router.get('/dashboard',(req,res)=>{
 })
 router.get('/menu',(req,res)=>{
     
-    const menu=Menu.find({})
-    .then(item=>res.render('admin/menu',{item:item}));
+    const item=Menu.find({category:'Breakfast'})
+    .then(item=>{
+        Menu.find({category:'Lunch'})
+        .then(item1=>{
+            Menu.find({category:'Dinner'})
+            .then(item2=>{
+                Menu.find({category:'Desert'})
+                .then(item3=>{
+                    res.render('customer/menu',{item:item,item1:item1,item2:item2,item3:item3}); 
+                    
+                })
+            })
+        })
+    }); 
     
     
 })

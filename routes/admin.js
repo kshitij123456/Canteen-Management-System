@@ -53,12 +53,13 @@ router.get('/menu',(req,res)=>{
        
     
 })
-router.post('/:id',(req,res)=>{
-    Menu.findOne({_id:req.params.id})
+router.post('/menu/:id',(req,res)=>{
+    Menu.findOne({_id:req.params.id})    
     .then(item=>{
         item.remove()
         .then(rem=>
-            res.redirect('admin/menu')
+            res.redirect('/admin/menu')
+            
             )
     })
     
