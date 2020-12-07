@@ -21,7 +21,22 @@ const UserSchema = new mongoose.Schema({
     date:{
         type:Date,
         default:Date.now()
-    }
+    },
+    balance:{
+        type:Number,
+        default:0       
+    },
+    subcription:[{
+        category:{
+            type:String,
+        
+        },
+        date:{
+            type:Date,
+             
+            
+        }
+    }]
     
 });
 

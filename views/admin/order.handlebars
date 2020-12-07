@@ -1,0 +1,75 @@
+<div>
+    <h2 class="textc">Customers</h2>
+    {{#if order}}
+    {{#ifsub order.category}}
+    <h2 class="textc">Premium subcription taken on date :  {{formatDate order.date 'DD/MM/YYYY'}} </h2>
+    <h2 class="textc">Premium subcription expires on date : {{ expiryDate order.date 'DD/MM/YYYY'}}</h2>
+    {{else}}
+     
+     <p class="lead">No customers are present</p>
+    {{/ifsub}}
+    <h2 class="textc">Top priority</h2>
+<table class="table">
+    <thead>
+        <tr>
+             
+            <th class="hide-sm">Name</th>
+            <th class="hide-sm">Price</th>
+            <th class="hide-sm">quantity</th>
+            <th class="hide-sm">category</th>
+        </tr>
+    </thead>
+    <tbody>
+            {{#each order}}
+            {{#each item}}
+            <tr>
+                     {{#iftop category}}
+                    <td>{{Name}}</td>
+                    <td>{{price}}</td>
+                    <td>{{quantity}}</td>                   
+                    <td>{{category}}</td> 
+                    {{/iftop}}   
+
+                   
+            </tr>
+             {{/each}}
+            {{/each}}
+    </tbody>
+   </table>
+   {{/if}} 
+   
+   <br>
+   {{#if order}}
+   <h2 class="textc">Less priority</h2>
+   <table class="table">
+    <thead>
+        <tr>
+             
+            <th class="hide-sm">Name</th>
+            <th class="hide-sm">Price</th>
+            <th class="hide-sm">quantity</th>
+            <th class="hide-sm">category</th>
+        </tr>
+    </thead>
+    <tbody>
+            {{#each order}}
+            {{#each item}}
+            <tr>
+                     {{#ifless category}}
+                    <td>{{Name}}</td>
+                    <td>{{price}}</td>
+                    <td>{{quantity}}</td>                   
+                    <td>{{category}}</td> 
+                    {{/ifless}}   
+
+                   
+            </tr>
+             {{/each}}
+            {{/each}}
+    </tbody>
+   </table> 
+{{/if}}
+
+
+
+</div>

@@ -1,0 +1,148 @@
+<div>
+    <h2 class="textc">Customers</h2>
+    {{#if order}}
+    <div>
+    
+</div>
+<h2 class="textc">Pre booked order</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th class="hide-sm">Username</th>           
+            <th class="hide-sm">Name</th>
+            <th class="hide-sm">Price</th>
+            <th class="hide-sm">quantity</th>
+            <th class="hide-sm">category</th>
+            <th class="hide-sm">Time</th>
+        </tr>
+    </thead>
+    <tbody>
+            {{#each order}}
+            {{#isEmptypre item}}
+            <tr><td>{{user.Name}}</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            {{#each item}}
+            <tr>
+                    
+                     {{#ifpre category}}
+                     {{#today date}}
+                     <td></td>
+                    <td>{{Name}}</td>
+                    <td>{{price}}</td>
+                    <td>{{quantity}}</td>                   
+                    <td>{{category}}</td>
+                    <td>{{time}} </td>
+                    {{/today}} 
+                    {{/ifpre}}   
+
+                   
+            </tr>
+             {{/each}}
+             </tr>
+            
+            {{/isEmptypre}}
+            {{/each}}
+    </tbody>
+   </table>
+    <h2 class="textc">Top priority</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th class="hide-sm">Username</th>           
+            <th class="hide-sm">Name</th>
+            <th class="hide-sm">Price</th>
+            <th class="hide-sm">quantity</th>
+            <th class="hide-sm">category</th>
+            <th class="hide-sm">Time</th>
+        </tr>
+    </thead>
+    <tbody>
+            {{#each order}}
+            {{#isEmptytop item}}
+            <tr><td>{{user.Name}}</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            {{#each item}}
+            <tr>
+                    
+                     {{#iftop category}}
+                     {{#today date}}
+                     <td></td>
+                    <td>{{Name}}</td>
+                    <td>{{price}}</td>
+                    <td>{{quantity}}</td>                   
+                    <td>{{category}}</td>
+                    <td>{{formatDate date 'LT'}}</td>
+                    {{/today}} 
+                    {{/iftop}}   
+
+                   
+            </tr>
+             {{/each}}
+             </tr>
+            {{/isEmptytop}}
+            {{/each}}
+    </tbody>
+   </table>
+    {{else}}
+     <p class="lead">No Top priority order are present for today  </p>
+   {{/if}} 
+   
+   <br>
+   {{#if order}}
+   <h2 class="textc">Less priority</h2>
+   <table class="table">
+    <thead>
+        <tr>
+            <th class="hide-sm">Username</th>   
+            <th class="hide-sm">Name</th>
+            <th class="hide-sm">Price</th>
+            <th class="hide-sm">quantity</th>
+            <th class="hide-sm">category</th>
+            <th class="hide-sm">Time</th>
+        </tr>
+    </thead>
+    <tbody>
+            {{#each order}}
+           
+            {{#isEmptyless item}}
+            <tr><td>{{user.Name}}</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        
+            {{#each item}}
+            <tr>
+                     {{#today date}}
+                     {{#ifless category}}
+                     
+                     <td></td>
+                    <td>{{Name}}</td>
+                    <td>{{price}}</td>
+                    <td>{{quantity}}</td>                   
+                    <td>{{category}}</td>
+                    <td>{{formatDate date 'LT'}}</td>
+                   
+                    {{/ifless}} 
+                    {{/today}}  
+                     
+
+                   
+            </tr>
+             {{/each}}
+           {{/isEmptyless}}
+            
+            {{/each}}
+    </tbody>
+   </table> 
+    {{else}}
+     <p class="lead"> No Less priority order are present for today </p>
+{{/if}}
+</div>

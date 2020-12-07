@@ -1,0 +1,134 @@
+ <div>
+    <h3 class="textc">Customers</h2>
+    {{#if pre}}
+    <h3 class="textc">Pre booked order</h3>
+   <table class="table">
+    <thead>
+        <tr>
+             
+            <th class="hide-sm">Name</th>
+            <th class="hide-sm">Price</th>
+            <th class="hide-sm">quantity</th>
+            <th class="hide-sm">Date</th>
+            <th class="hide-sm">Time(24 hrs format)</th>
+             
+        </tr>
+    </thead>
+    <tbody>
+            {{#each order}}
+            {{#each item}}
+            <tr>
+                     {{#ifpre category}}
+                    <td>{{Name}}</td>
+                    <td>{{price}}</td>
+                    <td>{{quantity}}</td> 
+                    <td>{{formatDate date 'DD/MM/YYYY'}}</td>
+                    <td>{{time}}</td>                  
+                    
+                    <td>
+                         <form action="/user/orders/{{id}}" method="POST">
+                        <button type="submit" class="view">DELETE</button>
+                        </form>
+
+
+                    </td> 
+                    {{/ifpre}}   
+
+                   
+            </tr>
+             {{/each}}
+            {{/each}}
+    </tbody>
+   </table> 
+   {{else}}
+     <p class="lead"> No Pre booked order are present  </p>
+{{/if}}
+{{#if top}}
+    <h3 class="textc">Top priority</h3>
+<table class="table">
+    <thead>
+        <tr>
+             
+            <th class="hide-sm">Name</th>
+            <th class="hide-sm">Price</th>
+            <th class="hide-sm">quantity</th>
+            <th class="hide-sm">Date</th>
+            <th class="hide-sm">Time</th>
+             
+        </tr>
+    </thead>
+    <tbody>
+            {{#each order}}
+            {{#each item}}
+            <tr>
+                     {{#iftop category}}
+                    <td>{{Name}}</td>
+                    <td>{{price}}</td>
+                    <td>{{quantity}}</td>  
+                     <td>{{formatDate date 'DD/MM/YYYY'}}</td>
+                      <td>{{formatDate date 'LT'}}</td>                 
+                     
+                    <td>
+                         <form action="/user/orders/{{id}}" method="POST">
+                        <button type="submit" class="view">DELETE</button>
+                        </form>
+                    </td> 
+                    {{/iftop}}   
+
+                   
+            </tr>
+             {{/each}}
+            {{/each}}
+    </tbody>
+   </table>
+   {{else}}
+     <p class="lead"> No Top priority order are present</p> 
+   {{/if}}
+   <br>
+   {{#if less}}
+   <h3 class="textc">Less priority</h3>
+   <table class="table">
+    <thead>
+        <tr>
+             
+            <th class="hide-sm">Name</th>
+            <th class="hide-sm">Price</th>
+            <th class="hide-sm">quantity</th>
+            <th class="hide-sm">Date</th>
+            <th class="hide-sm">Time</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+            {{#each order}}
+            {{#each item}}
+            <tr>
+                     {{#ifless category}}
+                    <td>{{Name}}</td>
+                    <td>{{price}}</td>
+                    <td>{{quantity}}</td>    
+                     <td>{{formatDate date 'DD/MM/YYYY'}}</td>
+                      <td>{{formatDate date 'LT'}}</td>               
+                   
+                    <td>
+                         <form action="/user/orders/{{id}}" method="POST">
+                        <button type="submit" class="view">DELETE</button>
+                        </form>
+
+
+                    </td> 
+                    {{/ifless}}   
+
+                   
+            </tr>
+             {{/each}}
+            {{/each}}
+    </tbody>
+   </table> 
+   {{else}}
+     <p class="lead"> No Less priority order are present  </p>
+{{/if}}
+
+
+
+</div>

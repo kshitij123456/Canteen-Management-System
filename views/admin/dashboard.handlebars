@@ -6,28 +6,49 @@
 
         <div>
 <h2 class="textc">Customers</h2>
+<a class="sub" href="/admin/premium">Premium subscriber customer</a>
+<a class="sub" href="/admin/nonpremium">Non Premium subscriber customer</a>
+<br>
+<br>
+{{#if customer}}
 <table class="table">
     <thead>
         <tr>
-            <th class="hide-sm">Id</th>
+             
             <th class="hide-sm">Name</th>
             <th class="hide-sm">Email</th>
             <th class="hide-sm">Address</th>
-            <th class="hide-sm">Date of joining</th>
+            <th class="hide-sm">Date of joining</th>             
             <th class="hide-sm">Order history</th>
+            <th class="hide-sm"></th>
         </tr>
     </thead>
     <tbody>
             {{#each customer}}
+            
             <tr>
-                    <td>{{id}}</td>
+                   
                     <td>{{Name}}</td>
                     <td>{{email}}</td>
                     <td>{{address}}</td>
-                    <td>{{date}}</td>
-                    <td><a class="view" href="/orderhistory">view</a></td>
+                    
+                    <td>{{formatDate date 'DD/MM/YYYY'}}</td>
+                     
+                   
+                     
+                    <td><a class="view" href="/admin/order/{{id}}">view</a></td>
+                    <td>
+                        <form action="/admin/dashboard/{{id}}" method="POST">
+                        <button type="submit" class="view">DELETE</button>
+                    </form>
+                    </td>
+                    
             </tr>
+            
             {{/each}}
+            {{else}}
+              <p class="lead">No customers are present</p>
+              {{/if}}
     </tbody>
 
 </div>

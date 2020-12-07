@@ -1,6 +1,21 @@
- 
-<div>
+ <div>
 <h2 class="large text-primary">Menu</h2>
+
+
+
+{{#if success}}
+  <div class="success">
+    <strong>{{success}} </strong>  
+  </div>
+{{/if}}
+
+{{#each error}}
+  <div class="success">
+    <strong>{{message}} </strong>  
+  </div>
+{{/each}}
+
+
  <p class="lead">BREAKFAST</p>
       {{#each item}}
     <div class="card">
@@ -9,11 +24,19 @@
     <h4><b>{{Name}}</b></h4> 
     <p>Rs {{price}}</p> 
     <p>Type: {{category}}</p>
-    <p><form action="/admin/menu/{{id}}" method="POST">
-    <button type="submit" class="button">DELETE</button>
+    <p>
+       <form action="/user/menu/{{id}}" method="post" class="form">
+    <div class="form-group">
+      <p><label>quantity</label>
+        <input type="number" id="quantity" name="quantity" value='{{quantity}}' placeholder=""/> 
+        <button type="submit" class="button">Add</button> </p>
+          
+        </div>         
+        
     </form>
-    <button> Order</button>
     </p>
+     
+
     
   </div>
 </div>
@@ -27,9 +50,17 @@
     <h4><b>{{Name}}</b></h4> 
     <p>Rs {{price}}</p> 
     <p>Type: {{category}}</p>
-    <form action="/admin/menu/{{id}}" method="POST">
-    <button type="submit" class="button">DELETE</button>
+     <p>
+         <form action="/user/menu/{{id}}" method="post" class="form">
+    <div class="form-group">
+      <p><label>quantity</label>
+        <input type="number" id="quantity" name="quantity" value='{{quantity}}' placeholder=""/> 
+        <button type="submit" class="button">Add</button> </p>
+          
+        </div>         
+        
     </form>
+    </p>
   </div>
 </div>
 <br><br>
@@ -42,9 +73,18 @@
     <h4><b>{{Name}}</b></h4> 
     <p>Rs {{price}}</p> 
     <p>Type: {{category}}</p>
-    <form action="/admin/menu/{{id}}" method="POST">
-    <button type="submit" class="button">DELETE</button>
+     <p>
+        <form action="/user/menu/{{id}}" method="post" class="form">
+    <div class="form-group">
+      <p><label>quantity</label>
+        <input type="number" id="quantity" name="quantity" value='{{quantity}}' placeholder=""/> 
+        <button type="submit" class="button">Add</button> </p>
+          
+        </div>         
+        
     </form>
+        
+    </p>
   </div>
 </div>
 <br><br>
@@ -58,9 +98,17 @@
     <h4><b>{{Name}}</b></h4> 
     <p>Rs {{price}}</p> 
     <p>Type: {{category}}</p>
-    <form action="/admin/menu/{{id}}" method="POST">
-    <button type="submit" class="button">DELETE</button>
+     <p>
+        <form action="/user/menu/{{id}}" method="post" class="form">
+    <div class="form-group">
+      <p><label>quantity</label>
+        <input type="number" id="quantity" name="quantity" value='{{quantity}}' placeholder=""/> 
+        <button type="submit" class="button">Add</button> </p>
+          
+        </div>         
+        
     </form>
+    </p>
   </div>
 </div>
 <br><br>

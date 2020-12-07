@@ -25,7 +25,7 @@ h1{
 }
 .textc {
   
-  margin-left:150px ;
+  margin-left:680px ;
 }
 .lead {
   font-size: 1.5rem;
@@ -33,11 +33,39 @@ h1{
   margin-left:150px ;
   color:#1E90FF;
 }
+.table{
+  margin: 0 auto;
+  
+}
 .table th,
 .table td {
   padding: 1rem;
   text-align: left;
   background-color: whitesmoke;
+}
+.sub{
+  padding: 10px;
+  background-color:black;
+  color: white;
+  margin-left:350px ;
+  text-decoration: none;
+  
+}
+.fail{
+  margin-left:150px ;
+  background-color:gainsboro;
+  width:50%;
+  color:red;
+  opacity: 80%;
+  padding: 10px;
+}
+.success{
+  margin-left:150px ;
+  background-color:gainsboro;
+  width:50%;
+  color:black;
+  opacity: 80%;
+  padding: 10px;
 }
 .view{
   padding: 10px;
@@ -81,7 +109,7 @@ h1{
     padding: 14px 16px;
     text-decoration: none;
     font-size: 17px;
-    margin-left: 600px;
+    margin-left: 500px;
   }
   /* Change the color of links on hover */
   .topnav a:hover {

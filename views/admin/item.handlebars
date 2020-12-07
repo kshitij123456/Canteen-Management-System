@@ -1,11 +1,14 @@
 <h2 class="large text-primary">Add product</h2>
 
 <div>
-    <form action="/admin/addItem" method="post" class="form">
+    <form action="/admin/addItem" method="post" class="form" enctype="multipart/form-data">
     <div class="form-group">
         <label>Name</label>
         <input type="text" name="Name" value='{{Name}}' placeholder="Name of the item"/></div>
-         
+        <div class="form-group">
+            <label>Image</label><br>
+            <input type="file" name="file" value='{{file}}'>
+        </div> 
         <div class="form-group">
         <label>Price</label>
         <input type="text" name="price" value='{{price}}' placeholder="price"/></div>

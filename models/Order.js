@@ -2,19 +2,52 @@ const mongoose = require('mongoose');
 
 const menuSchema = new mongoose.Schema({
     user:{
-        type:Schema.Types.ObjectId,
+        type:mongoose.Schema.Types.ObjectId,
         ref:'user'
     },
-    menu:{
-        type:Schema.Types.ObjectId,
-        ref:'menu'
-    },
+    item:[{
+        Name:{
+            type:String,
+            
+            required:true
+        },
+        price:{
+            type:String,
+    
+            required:true,
+             
+        },
+        file: {
+            type: String
+        },
+          
+        quantity:{
+            type:String,
+            
+        },
+        category:{
+            type:String,
+            
+        },
+        date:{
+            type:Date,
+        },
+        time:{
+            type:String
+        }
+
+      
+
+    }],
     category:{
         type:String,
-        required:true
+        
     }, 
+    date:{
+        type:Date,
+    }
     
     
 });
 
-module.exports =mongoose.model('menu',menuSchema);
+module.exports =mongoose.model('order',menuSchema);

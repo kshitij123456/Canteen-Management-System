@@ -38,6 +38,9 @@ class Registeration extends home{
 }
 
 class loginCustomer extends home {
+    constructor(email,passport){
+        super(email,passport);
+    }
     login(){
         passport.use(new LocalStrategy({usernameField: 'email'},(email, password, done)=> {
             User.findOne({email:email}).then(user=>{
@@ -56,6 +59,7 @@ class loginCustomer extends home {
         
         passport.serializeUser(function(user, done) {
             done(null, user.id);
+            
           });
           
           passport.deserializeUser(function(id, done) {
@@ -63,8 +67,7 @@ class loginCustomer extends home {
               done(err, user);
             });
           });
-         
-    }
+}
 }
 
 class Admin extends home{

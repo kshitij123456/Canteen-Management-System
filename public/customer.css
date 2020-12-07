@@ -9,6 +9,14 @@ h2{
   margin-bottom: 1rem;
    
 }
+.success{
+  margin-left:150px ;
+  background-color:gainsboro;
+  width:50%;
+  color:black;
+  opacity: 80%;
+  padding: 10px;
+}
 .text-primary {
   color:#1E90FF;
   margin-left:150px ;
@@ -36,15 +44,9 @@ body{
   padding: 14px 16px;
   text-decoration: none;
   font-size: 17px;
-  margin-left: 700px;
+  margin-left: 450px;
 }
-  table {
-    width: 100%;
-    border: 1px solid black;
-  }
-th, td {
-    border: 1px solid black;
-  }
+  
    
   .topnav {
     display: flex;
@@ -68,15 +70,7 @@ th, td {
     font-size: 17px;
     
   }
-  .first{
-    float: left;
-    color: #f2f2f2;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 17px;
-    margin-left: 700px;
-  }
+   
   /* Change the color of links on hover */
   .topnav a:hover {
     background-color: #ddd;
@@ -98,6 +92,7 @@ th, td {
       transition: 0.3s;
       width: 40%;
       margin-left:150px ;
+      justify-content: center;
       
     }
     
@@ -108,4 +103,85 @@ th, td {
     .container {
       padding: 2px 16px;
       background-color:whitesmoke;
+
     }
+    .menu{
+      display: grid;
+      grid-template-columns: 1fr 4fr;
+      grid-gap: 2rem;
+      align-items: center;
+      padding: 1rem 0;
+      margin: 1rem;
+      width: fit-content;
+    }
+    .form{
+      display: ;
+    }
+     .form-group {
+      margin: 1.2rem 0;
+      margin-left:150px ;
+          
+    }
+     
+    
+    .form-text {
+      display: block;
+      margin-top: 0.3rem;
+      color: #888;
+      
+    }
+    .form input[type='text'],
+    .form select
+    {
+    display: block;
+    width: 70%;
+    padding: 0.4rem;
+    font-size: 1.2rem;
+    border: 1px solid #ccc;
+    
+  }
+  .registerbtn {
+    font: inherit;
+    background-color:black;
+      float: left;
+      color: #f2f2f2;
+      text-align: center;
+      padding: 14px 16px;
+      margin-left:150px ;
+    
+  } 
+  .button{
+    font:inherit;
+    background-color:black;
+    color: #f2f2f2;
+      text-align: center;
+     
+      border: none;
+  }
+  .textc {
+    font-size: x-large;
+    margin-left:680px ;
+  }
+  .table{
+    margin: 0 auto;
+    
+  }
+  .table th,
+  .table td {
+    padding: 1rem;
+    text-align: left;
+    background-color: whitesmoke;
+  }
+  .view{
+    padding: 10px;
+    background-color:#1E90FF;
+    color: white;
+    text-align: center;
+    font-size: 17px;
+    text-decoration: none;
+  }
+  .table th {
+    background:#ff6347;
+    color: #f2f2f2;
+    border: 1px black solid;
+  }
