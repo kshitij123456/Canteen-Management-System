@@ -35,6 +35,7 @@ class Registeration extends home{
         });
     });
   }
+  
 }
 
 class loginCustomer extends home {
@@ -75,7 +76,7 @@ class Admin extends home{
         super(email,password);
     }
     login(){
-        if(this.email==="mohit123@gmail.com" && this.password==="1234567")
+        if(this.email==="admin123@gmail.com" && this.password==="1234567")
         {
             return true
 

@@ -237,11 +237,12 @@ router.get('/wallet',(req,res)=>{
 });
 
 router.post('/wallet',(req,res)=>{
+    
     User.findOneAndUpdate({_id:req.user.id},{$inc:{'balance':req.body.amount}})
     .then(user=>{
         req.flash('success',`Rs ${req.body.amount} added to your wallet`);
        res.redirect('/user/wallet');
-        }) 
+        })
 })
 
 
