@@ -2,11 +2,15 @@
      <h2 class="large text-primary">Customer Login</h2>
      {{#if error}}
      <br>
-  <div class="fail">
-      
+  <div class="fail">     
     <strong>{{error}} </strong>  
   </div>
   <br>
+{{/if}}
+{{#if success}}
+  <div class="success">
+    <strong>{{success}} </strong>  
+  </div>
 {{/if}}
  <form action="/customer_login" method="post" class="form">
        

@@ -26,17 +26,7 @@ const UserSchema = new mongoose.Schema({
         type:Number,
         default:0       
     },
-    subcription:[{
-        category:{
-            type:String,
-        
-        },
-        date:{
-            type:Date,
-             
-            
-        }
-    }]
+    
     
 });
 

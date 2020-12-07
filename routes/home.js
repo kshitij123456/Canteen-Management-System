@@ -2,7 +2,7 @@ const express=require('express');
 const router=express.Router(); 
 const passport = require('passport');
 const User=require('../models/User');
-const {loginCustomer,Registeration,Admin} =require('../classes/home');
+const {loginCustomer,Customer,Admin} =require('../classes/home');
 
 
  
@@ -27,8 +27,8 @@ router.post('/register',(req,res)=>{
         res.render('home/register',{error:error});
     }
    else{
-    let customer=new Registeration(req.body.email,req.body.password,req.body.Name,req.body.address);
-    customer.register();                   
+    let user=new Customer(req.body.email,req.body.password,req.body.Name,req.body.address,0);
+    user.register();                   
     req.flash('success','Registered successfully');
         res.redirect('/customer_login'); 
    }

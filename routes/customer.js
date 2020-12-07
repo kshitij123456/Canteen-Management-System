@@ -3,7 +3,7 @@ const router=express.Router();
 const Menu=require('../models/Menu');
 const User = require('../models/User');
 const Order=require('../models/Order');
-
+const {Customer,subcription} =require('../classes/home');
 const {orders}=require('../classes/customerorder');
 
 router.all('/*',(req,res,next)=>{
@@ -20,11 +20,8 @@ router.get('/',async(req,res)=>{
         res.render('customer/dashboard',{user:user });
     }
     else{
-        const newCustomer = new Order({
-            user:req.user.id,
-            category:"Less Priority"
-        })
-        await newCustomer.save();
+       const less=new subcription(req.user.id,"Less Priority");
+       less.nonpermium();
         res.render('customer/dashboard',{user:user });
     
     }
@@ -67,27 +64,12 @@ router.get('/subcription',async (req,res)=>{
    
 })
 router.post('/subcription',async(req,res)=>{
-    const user=await Order.findOne({user:req.user.id});
-    const customer=await User.findOne({_id:req.user.id});
-    
-        user.category="Top Priority";
-        user.date=Date.now();
-        await user.save();
-        const sub ={
-            category:"Top Priority",
-            date:Date.now()
-        }
-        customer.subcription.unshift(sub);
-        await customer.save();
-        res.render('customer/dashboard');
     
     
-   
-
-
-
-    
+    const top=new subcription(req.user.id,"Top Priority");
+    top.premium();
        
+        res.render('customer/dashboard');      
     
     
 })
@@ -224,8 +206,6 @@ router.post('/preorder/:id',async(req,res)=>{
 
 
 
-
-
 router.get('/wallet',(req,res)=>{
     User.findOne({_id:req.user.id})
     .then(user=>{
@@ -236,13 +216,13 @@ router.get('/wallet',(req,res)=>{
     
 });
 
-router.post('/wallet',(req,res)=>{
+router.post('/wallet',async(req,res)=>{
+    const user=await User.findById(req.user.id);
+    const customer=new Customer(user.email,user.password,user.Name,user.address,user.balance);
+    customer.updateWallet(req.user.id ,req.body.amount);
+    req.flash('success',`Rs ${req.body.amount} added to your wallet`);
+    res.redirect('/user/wallet');    
     
-    User.findOneAndUpdate({_id:req.user.id},{$inc:{'balance':req.body.amount}})
-    .then(user=>{
-        req.flash('success',`Rs ${req.body.amount} added to your wallet`);
-       res.redirect('/user/wallet');
-        })
 })
 
 

@@ -75,7 +75,8 @@ app.use('/user',require('./routes/customer'));
 mongoose.connect("mongodb+srv://CMS:cmsoops@cms.dujeq.mongodb.net/<dbname>?retryWrites=true&w=majority",
 { useNewUrlParser: true,
   useUnifiedTopology: true,
-  useCreateIndex:true
+  useCreateIndex:true,
+  useFindAndModify:false
 },
 ()=>console.log('db connected'));
 
