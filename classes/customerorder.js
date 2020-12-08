@@ -5,7 +5,7 @@ class menu {
         this.name=name;
         this.price=price;
         this.category=category;
-        //this.file=filename;
+       
         
     }
     addItem(){
@@ -13,7 +13,7 @@ class menu {
             Name:this.name,
             price:this.price,
             category:this.category,
-            file:this.filename
+            
             
         });
         newItem.save();

@@ -93,6 +93,7 @@ body{
       width: 40%;
       margin-left:150px ;
       justify-content: center;
+      padding: 10px;
       
     }
     
@@ -102,7 +103,7 @@ body{
     
     .container {
       padding: 2px 16px;
-      background-color:whitesmoke;
+      background-color:white;
 
     }
     .menu{
