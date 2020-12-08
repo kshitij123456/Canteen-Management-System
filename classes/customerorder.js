@@ -22,10 +22,11 @@ class menu {
 }
 
 class orders extends menu{
-    constructor(name,price,category,quantity){
+    constructor(name,price,category,quantity,status){
         super(name,price,category);
         this.quantity=quantity;
         this.date=Date.now();
+        this.status=status
     }
     neworder(){
         const newOrder={
@@ -33,7 +34,8 @@ class orders extends menu{
             price:this.price,
             quantity:this.quantity, 
             category:this.category,
-            date:this.date
+            date:this.date,
+            status:this.status
         }
         return newOrder;
     }
@@ -44,7 +46,8 @@ class orders extends menu{
             quantity:this.quantity, 
             category:this.category,
             date:this.date,
-            time:time
+            time:time,
+            status:this.status
         }
         return newpreOrder;
     }

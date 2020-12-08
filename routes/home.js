@@ -2,7 +2,7 @@ const express=require('express');
 const router=express.Router(); 
 const passport = require('passport');
 const User=require('../models/User');
-const {loginCustomer,Customer,Admin} =require('../classes/home');
+const {loginCustomer,Customer,Admin,subcription} =require('../classes/home');
 
 
  
@@ -28,7 +28,8 @@ router.post('/register',(req,res)=>{
     }
    else{
     let user=new Customer(req.body.email,req.body.password,req.body.Name,req.body.address,0);
-    user.register();                   
+    user.register();  
+                 
     req.flash('success','Registered successfully');
         res.redirect('/customer_login'); 
    }
@@ -42,6 +43,7 @@ res.render('home/customer_login')
 });
 
 router.post('/customer_login', (req, res, next)=>{
+    
     const newLogin=new loginCustomer(req.body.email,req.body.password);
     newLogin.login();
    passport.authenticate('local',{

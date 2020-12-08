@@ -37,12 +37,13 @@ app.use((req,res,next)=>{
 })
 
 
-const {iftop,ifless,ifpre,formatDate,today,isEmptytop,isEmptyless,isEmptypre,ifsub:ifsub, expiryDate: expiryDate,  startDate:  startDate}=require('./helpers/handlebars-helper');
+const {iftop,ifless,ifpre,formatDate,today,isEmptytop,isEmptyless,isEmptypre,ifsub:ifsub, expiryDate: expiryDate,startDate:startDate,ifreceived:ifreceived}=require('./helpers/handlebars-helper');
 app.engine('handlebars',exphb({defaultLayout:'home',helpers:{iftop:iftop,
                                                             ifless:ifless,
                                                             ifpre:ifpre,
                                                             formatDate:formatDate,
                                                             today:today,
+                                                            ifreceived:ifreceived,
                                                             isEmptytop:isEmptytop,
                                                             isEmptyless:isEmptyless,
                                                             isEmptypre:isEmptypre,

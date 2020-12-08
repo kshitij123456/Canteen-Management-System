@@ -1,5 +1,5 @@
 <div>
-    <h2 class="textc">Customers</h2>
+    <h2 class="textc">Orders placed today</h2>
     {{#if order}}
     <div>
     
@@ -25,6 +25,13 @@
             <td></td>
             <td></td>
             <td></td>
+            <td>
+                <form class="form" action="/admin/orders/{{user.id}}" method="post">
+                <button class="view" type="submit">Deliver</button>
+                
+                </form>
+
+            </td>
             {{#each item}}
             <tr>
                     
@@ -68,6 +75,14 @@
             <td></td>
             <td></td>
             <td></td>
+            <td></td>
+            <td>
+                <form class="form" action="/admin/orders/{{user.id}}" method="post">
+                <button class="view" type="submit">Deliver</button>
+                
+                </form>
+
+            </td>
             {{#each item}}
             <tr>
                     
@@ -79,6 +94,7 @@
                     <td>{{quantity}}</td>                   
                     <td>{{category}}</td>
                     <td>{{formatDate date 'LT'}}</td>
+                     
                     {{/today}} 
                     {{/iftop}}   
 
@@ -117,7 +133,13 @@
             <td></td>
             <td></td>
             <td></td>
-        
+            <td>
+                <form class="form" action="/admin/orders/{{user.id}}" method="post">
+                <button class="view" type="submit">Deliver</button>
+                
+                </form>
+
+            </td>
             {{#each item}}
             <tr>
                      {{#today date}}

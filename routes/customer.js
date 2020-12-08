@@ -15,40 +15,23 @@ router.all('/*',(req,res,next)=>{
 
 router.get('/',async(req,res)=>{
     const user=await User.findById(req.user.id);
-    const order=await Order.findOne({user:req.user.id});
-    if(order){
-        res.render('customer/dashboard',{user:user });
-    }
-    else{
-       const less=new subcription(req.user.id,"Less Priority");
-       less.nonpermium();
-        res.render('customer/dashboard',{user:user });
     
-    }
-    
+        res.render('customer/dashboard',{user:user });
+   
         
 })
 router.get('/dashboard',(req,res)=>{
     res.render('customer/dashboard');  
 })
 
-router.get('/menu',(req,res)=>{
+router.get('/menu',async(req,res)=>{
     
-    const item=Menu.find({category:'Breakfast'})
-    .then(item=>{
-        Menu.find({category:'Lunch'})
-        .then(item1=>{
-            Menu.find({category:'Dinner'})
-            .then(item2=>{
-                Menu.find({category:'Desert'})
-                .then(item3=>{
-                    res.render('customer/menu',{item:item,item1:item1,item2:item2,item3:item3}); 
-                    
-                })
-            })
-        })
-    }); 
-    
+    const item=await Menu.find({category:'Breakfast'});
+    const item1=await Menu.find({category:'Lunch'});
+    const item2=await Menu.find({category:'Dinner'});
+    const item3=await Menu.find({category:'Desert'});
+     
+    res.render('customer/menu',{item:item,item1:item1,item2:item2,item3:item3}); 
     
 });
 router.get('/subcription',async (req,res)=>{
@@ -61,6 +44,7 @@ router.get('/subcription',async (req,res)=>{
     else{
         res.render('customer/subcription');
     }
+
    
 })
 router.post('/subcription',async(req,res)=>{
@@ -82,14 +66,14 @@ router.post('/menu/:id',async(req,res)=>{
     const customer=await Order.findOne({user:req.user.id});
     if(user.balance>=item.price){
        
-        await User.findOneAndUpdate({_id:req.user.id},{$inc:{'balance': -item.price}});
+        await User.findOneAndUpdate({_id:req.user.id},{$inc:{'balance': -(req.body.quantity*item.price)}});
         if(customer){
             if(customer.category=="Top Priority"){
-                const order=new orders(item.Name,item.price,"top",req.body.quantity);
+                const order=new orders(item.Name,item.price,"top",req.body.quantity,"not received");
                 customer.item.unshift(order.neworder());
             }
             else{
-                const order=new orders(item.Name,item.price,"less",req.body.quantity);
+                const order=new orders(item.Name,item.price,"less",req.body.quantity,"not received");
                 customer.item.unshift(order.neworder());
             }
             await customer.save();
@@ -104,7 +88,7 @@ router.post('/menu/:id',async(req,res)=>{
             })
             await newCustomer.save();
             const order=await Order.findOne({user:req.user.id});
-            const norder=new orders(item.Name,item.price,"less",req.body.quantity);
+            const norder=new orders(item.Name,item.price,"less",req.body.quantity,"not received");
                 order.item.unshift(norder.neworder());
                 await order.save();
                 req.flash('success','Order placed successfully and money has been deducted from wallet');
@@ -127,7 +111,7 @@ router.post('/orders/:id',async(req,res)=>{
     const order=await Order.findOne({user:req.user.id});
 
     const Item=order.item.find(item=>item.id==req.params.id); 
-    await User.findOneAndUpdate({_id:req.user.id},{$inc:{'balance': Item.price}});
+    await User.findOneAndUpdate({_id:req.user.id},{$inc:{'balance': (Item.price*Item.quantity)}});
     const it=order.item=order.item.filter(
         ({id})=>id!=req.params.id
     );
@@ -189,8 +173,8 @@ router.post('/preorder/:id',async(req,res)=>{
     const user=await User.findOne({_id:req.user.id});
     const customer=await Order.findOne({user:req.user.id});
     if(user.balance>=item.price){
-        await User.findOneAndUpdate({_id:req.user.id},{$inc:{'balance': -item.price}});
-        const order=new orders(item.Name,item.price,"pre",req.body.quantity);
+        await User.findOneAndUpdate({_id:req.user.id},{$inc:{'balance': -(req.body.quantity*item.price)}});
+        const order=new orders(item.Name,item.price,"pre",req.body.quantity,"not received");
         customer.item.unshift(order.newpreorder(req.body.time));
         await customer.save();
         req.flash('success','Order placed successfully and money has been deducted from wallet');

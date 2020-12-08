@@ -6,7 +6,9 @@ module.exports={
     isEmptytop:function (item,options){
         let top=0;
     item.forEach(item=>{
-        if(item.category=="top"){
+        const d=moment(item.date).format('DD/MM/YYYY');
+        const td=moment(Date.now()).format('DD/MM/YYYY');
+        if(item.category=="top" && item.status=="not received" && d==td){
             top++;
         }        
     })
@@ -19,7 +21,7 @@ module.exports={
     item.forEach(item=>{
         const d=moment(item.date).format('DD/MM/YYYY');
         const td=moment(Date.now()).format('DD/MM/YYYY');
-        if(item.category=="less" && d==td){
+        if(item.category=="less" && item.status=="not received" && d==td){
             less++;
         }
         
@@ -33,12 +35,15 @@ module.exports={
     item.forEach(item=>{
         const d=moment(item.date).format('DD/MM/YYYY');
         const td=moment(Date.now()).format('DD/MM/YYYY');
-        if(item.category=="pre" && d==td){
+        if(item.category=="pre" && item.status=="not received" && d==td){
             pre++;
         }
          
     })
     return (pre >0) ? options.fn(this) : options.inverse(this);
+    },
+    ifreceived:function(status,options){
+        return (status == "not received") ? options.fn(this) : options.inverse(this);
     },
     iftop:function ( category,options){
         return (category == "top") ? options.fn(this) : options.inverse(this);
@@ -56,10 +61,9 @@ module.exports={
     today: function(date,options){
         const d=moment(date).format('DD/MM/YYYY');
         const td=moment(Date.now()).format('DD/MM/YYYY');
-        return (d == td) ? options.fn(this) : options.inverse(this);
+        return (d == td  ) ? options.fn(this) : options.inverse(this);
     },
     ifsub:function ( category,options){
-        console.log(category);
         return (category == "Top Priority") ? options.fn(this) : options.inverse(this);
     },
     

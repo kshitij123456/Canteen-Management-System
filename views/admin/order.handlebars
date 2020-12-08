@@ -1,13 +1,51 @@
 <div>
-    <h2 class="textc">Customers</h2>
-    {{#if order}}
+    <h2 class="textc">Orders</h2>
+    
     {{#ifsub order.category}}
     <h2 class="textc">Premium subcription taken on date :  {{formatDate order.date 'DD/MM/YYYY'}} </h2>
     <h2 class="textc">Premium subcription expires on date : {{ expiryDate order.date 'DD/MM/YYYY'}}</h2>
-    {{else}}
      
-     <p class="lead">No customers are present</p>
     {{/ifsub}}
+
+    {{#each order}}
+    {{#each item}}
+     {{#ifpre category}}
+    <h2 class="textc">Pre booked order</h2>
+<table class="table">
+    <thead>
+        <tr>
+             
+            <th class="hide-sm">Name</th>
+            <th class="hide-sm">Price</th>
+            <th class="hide-sm">quantity</th>
+            <th class="hide-sm">category</th>
+        </tr>
+    </thead>
+    <tbody>
+            
+            <tr>
+                    
+                    <td>{{Name}}</td>
+                    <td>{{price}}</td>
+                    <td>{{quantity}}</td>                   
+                    <td>{{category}}</td> 
+                   
+                     
+
+                   
+            </tr>
+            
+    </tbody>
+   </table>
+   
+    {{/ifpre}} 
+    {{/each}}
+            {{/each}}
+             
+
+    {{#each order}}
+    {{#each item}}
+     {{#iftop category}}
     <h2 class="textc">Top priority</h2>
 <table class="table">
     <thead>
@@ -20,26 +58,33 @@
         </tr>
     </thead>
     <tbody>
-            {{#each order}}
-            {{#each item}}
+            
             <tr>
-                     {{#iftop category}}
+                    
                     <td>{{Name}}</td>
                     <td>{{price}}</td>
                     <td>{{quantity}}</td>                   
                     <td>{{category}}</td> 
-                    {{/iftop}}   
+                   
+                     
 
                    
             </tr>
-             {{/each}}
-            {{/each}}
+            
     </tbody>
    </table>
-   {{/if}} 
    
+    {{/iftop}} 
+    {{/each}}
+            {{/each}}
+             
+   
+    
    <br>
-   {{#if order}}
+   
+    {{#each order}}
+    {{#each item}}
+    {{#ifless category}}
    <h2 class="textc">Less priority</h2>
    <table class="table">
     <thead>
@@ -52,23 +97,24 @@
         </tr>
     </thead>
     <tbody>
-            {{#each order}}
-            {{#each item}}
+           
             <tr>
-                     {{#ifless category}}
+                     
                     <td>{{Name}}</td>
                     <td>{{price}}</td>
                     <td>{{quantity}}</td>                   
                     <td>{{category}}</td> 
-                    {{/ifless}}   
+                      
 
                    
             </tr>
-             {{/each}}
-            {{/each}}
+            
     </tbody>
    </table> 
-{{/if}}
+   {{/ifless}} 
+    {{/each}}
+            {{/each}}
+ 
 
 
 

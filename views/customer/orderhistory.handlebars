@@ -9,6 +9,7 @@
             <th class="hide-sm">Name</th>
             <th class="hide-sm">Price</th>
             <th class="hide-sm">quantity</th>
+            <th class="hide-sm">status</th>
             <th class="hide-sm">Date</th>
             <th class="hide-sm">Time(24 hrs format)</th>
              
@@ -22,16 +23,17 @@
                     <td>{{Name}}</td>
                     <td>{{price}}</td>
                     <td>{{quantity}}</td> 
+                    <td>{{status}}</td>
                     <td>{{formatDate date 'DD/MM/YYYY'}}</td>
                     <td>{{time}}</td>                  
                     
+                      {{#ifreceived status}}
                     <td>
                          <form action="/user/orders/{{id}}" method="POST">
                         <button type="submit" class="view">DELETE</button>
                         </form>
-
-
                     </td> 
+                    {{/ifreceived}}
                     {{/ifpre}}   
 
                    
@@ -52,6 +54,7 @@
             <th class="hide-sm">Name</th>
             <th class="hide-sm">Price</th>
             <th class="hide-sm">quantity</th>
+            <th class="hide-sm">status</th>
             <th class="hide-sm">Date</th>
             <th class="hide-sm">Time</th>
              
@@ -64,15 +67,18 @@
                      {{#iftop category}}
                     <td>{{Name}}</td>
                     <td>{{price}}</td>
-                    <td>{{quantity}}</td>  
+                    <td>{{quantity}}</td> 
+                    <td>{{status}}</td> 
                      <td>{{formatDate date 'DD/MM/YYYY'}}</td>
                       <td>{{formatDate date 'LT'}}</td>                 
                      
+                      {{#ifreceived status}}
                     <td>
                          <form action="/user/orders/{{id}}" method="POST">
                         <button type="submit" class="view">DELETE</button>
                         </form>
                     </td> 
+                    {{/ifreceived}}
                     {{/iftop}}   
 
                    
@@ -94,6 +100,7 @@
             <th class="hide-sm">Name</th>
             <th class="hide-sm">Price</th>
             <th class="hide-sm">quantity</th>
+            <th class="hide-sm">status</th>
             <th class="hide-sm">Date</th>
             <th class="hide-sm">Time</th>
             
@@ -106,17 +113,17 @@
                      {{#ifless category}}
                     <td>{{Name}}</td>
                     <td>{{price}}</td>
-                    <td>{{quantity}}</td>    
+                    <td>{{quantity}}</td>  
+                    <td>{{status}}</td>  
                      <td>{{formatDate date 'DD/MM/YYYY'}}</td>
                       <td>{{formatDate date 'LT'}}</td>               
-                   
+                   {{#ifreceived status}}
                     <td>
                          <form action="/user/orders/{{id}}" method="POST">
                         <button type="submit" class="view">DELETE</button>
                         </form>
-
-
                     </td> 
+                    {{/ifreceived}}
                     {{/ifless}}   
 
                    

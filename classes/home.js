@@ -2,7 +2,9 @@ const bcrypt = require('bcryptjs');
 const User=require('../models/User');
 const Order=require('../models/Order');
 const passport = require('passport');
+const moment = require('moment');
 const LocalStrategy = require('passport-local').Strategy;
+
 class home{
     constructor(email,password){
         this.email=email;
@@ -34,7 +36,9 @@ class Customer extends home{
     bcrypt.genSalt(10, (err, salt)=>{
         bcrypt.hash(newUser.password, salt, (err, hash)=>{
             newUser.password = hash;
-            newUser.save();     
+            newUser.save(); 
+            const less=new subcription(newUser.id,"Less Priority");
+            less.nonpermium();     
             
         });
     });
@@ -119,6 +123,31 @@ class subcription{
         user.date=this.date;
         await user.save();
     }
+    async expirydate(){
+        const user=await Order.findById(this.id);
+        const d=user.date.getDate();
+        const m=user.date.getMonth()+3;
+        const y=user.date.getFullYear();
+        const ed=new Date(
+                y,m,d
+            )
+        return moment(ed).format('DD/MM/YYYY') ;    
+    }
+    async cancel(){
+        const user=await Order.findById(this.id);
+   
+     const today= moment(Date.now()).format('DD/MM/YYYY')   
+     const expd=await this.expirydate();  
+          
+     if(today==expd){
+        user.category="Less Priority"
+    await user.save();
+    return true;
+    }
+    else{
+        return false;
+    }
+}
 }
 
 module.exports={loginCustomer , Customer, Admin,subcription}

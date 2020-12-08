@@ -26,8 +26,10 @@ const menuSchema = new mongoose.Schema({
             
         },
         category:{
-            type:String,
-            
+            type:String,            
+        },
+        status:{
+            type:String
         },
         date:{
             type:Date,
